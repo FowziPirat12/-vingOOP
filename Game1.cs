@@ -13,11 +13,10 @@ public class Game1 : Game
 
     Texture2D pixel; 
     Player player;
-    Wernow enemy;
-    Archer archer;
+    
 
-    List<Wernow> enemies = new List<Wernow>();
-    List<Archer> archers = new List<Archer>();
+    List<Enemy> enemies = new List<Enemy>();
+   
 
 
     public Game1()
@@ -42,8 +41,8 @@ public class Game1 : Game
         pixel.SetData(new Color[]{Color.White});
 
         player = new Player(pixel);
-        enemy = new Wernow(pixel, player);
-        archer = new Archer(pixel, player);
+        enemies.Add (new Wernow(pixel, player));
+        enemies.Add(new Archer(pixel, player));
 
         // TODO: use this.Content to load your game content here
     }
@@ -54,8 +53,10 @@ public class Game1 : Game
             Exit();
 
             player.Update();
-            enemy.Update();
-            archer.Update();
+            foreach (Enemy enemy in enemies){
+                enemy.Update();
+            }
+            Collision();
         // TODO: Add your update logic here
 
         base.Update(gameTime);
@@ -67,8 +68,10 @@ public class Game1 : Game
 
         _spriteBatch.Begin();
         player.Draw(_spriteBatch);
-        enemy.Draw(_spriteBatch);
-        archer.Draw(_spriteBatch);
+        
+        foreach (Enemy enemy in enemies){
+            enemy.Draw(_spriteBatch);
+        }
 
 
         _spriteBatch.End();
@@ -76,5 +79,20 @@ public class Game1 : Game
         // TODO: Add your drawing code here
 
         base.Draw(gameTime);
+    }
+
+    private void Collision(){
+        List<Bullet> bullets = player.Bullets;
+        List<Enemy> livingEnemies = new List<Enemy>();
+        if(bullets.Count == 0) return;
+        foreach(Enemy enemy in enemies){
+            foreach(Bullet bullet in bullets){
+                if(!bullet.Hitbox.Intersects(enemy.Hitbox)){
+                    livingEnemies.Add(enemy);
+                }
+            } 
+            livingEnemies.Add(enemy);
+        }
+        enemies = livingEnemies;
     }
 }

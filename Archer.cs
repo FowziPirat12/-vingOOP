@@ -5,20 +5,16 @@ namespace _vingOOP
 {
     public class Archer: Enemy
     {
-        private Vector2 position;
 
-        private Texture2D texture;
-
-        private Player target;
-
-        public Archer(Texture2D texture, Player target){
+        public Archer(Texture2D texture, Player target): base (texture, target){
             this.texture = texture;
             this.target = target;
 
             position = new Vector2(500, 500);
+            color = Color.DarkGreen;
         }
 
-        public void Update(){
+        public override void Update(){
             
             Vector2 direction = target.Position - position;
             direction.Normalize();
@@ -27,19 +23,10 @@ namespace _vingOOP
 
             }
 
-            else if (Vector2.Distance(target.Position, position) > 100){
+            else if (Vector2.Distance(target.Position, position) < 100){
                 position += direction;
             }
            
-        }
-
-        public void Draw(SpriteBatch spriteBatch)
-        {
-            Rectangle rec = new Rectangle();
-            rec.Location = position.ToPoint();
-            rec.Width = 25;
-            rec.Height = 50;
-            spriteBatch.Draw(texture, rec, Color.DarkGreen);
         }
     }
 }
