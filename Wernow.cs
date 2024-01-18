@@ -18,7 +18,7 @@ namespace _vingOOP
             direction.Normalize();
 
             position += direction;
-
+            hitbox.Location = position.ToPoint();
         }
 
         

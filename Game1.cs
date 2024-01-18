@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -83,16 +84,14 @@ public class Game1 : Game
 
     private void Collision(){
         List<Bullet> bullets = player.Bullets;
-        List<Enemy> livingEnemies = new List<Enemy>();
         if(bullets.Count == 0) return;
-        foreach(Enemy enemy in enemies){
-            foreach(Bullet bullet in bullets){
-                if(!bullet.Hitbox.Intersects(enemy.Hitbox)){
-                    livingEnemies.Add(enemy);
+        foreach(Bullet bullet in bullets){
+            for(int i = 0; i < enemies.Count; i++){
+                if(bullet.Hitbox.Intersects(enemies[i].Hitbox)){
+                    enemies.RemoveAt(i);
+                    i--;
                 }
             } 
-            livingEnemies.Add(enemy);
         }
-        enemies = livingEnemies;
     }
 }

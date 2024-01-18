@@ -11,6 +11,7 @@ namespace _vingOOP
           public Enemy(Texture2D texture, Player target):base(texture){
             this.texture = texture;
             this.target = target;
+            hitbox.Size = new Point(25,50);
         }
 
         public virtual void Draw(SpriteBatch spriteBatch)

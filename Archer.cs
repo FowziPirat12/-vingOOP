@@ -27,6 +27,7 @@ namespace _vingOOP
                 position += direction;
             }
            
+           hitbox.Location = position.ToPoint();
         }
     }
 }

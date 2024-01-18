@@ -7537,11 +7537,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\Users\\Admin\\Documents\\GitHub\\Objektorientering\\-vingOOP\\-vingOOP.csproj",
+      "projectUniqueName": "C:\\Users\\Admin\\Documents\\GitHub\\-vingOOP\\-vingOOP.csproj",
       "projectName": "-vingOOP",
-      "projectPath": "c:\\Users\\Admin\\Documents\\GitHub\\Objektorientering\\-vingOOP\\-vingOOP.csproj",
+      "projectPath": "C:\\Users\\Admin\\Documents\\GitHub\\-vingOOP\\-vingOOP.csproj",
       "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-      "outputPath": "c:\\Users\\Admin\\Documents\\GitHub\\Objektorientering\\-vingOOP\\obj\\",
+      "outputPath": "C:\\Users\\Admin\\Documents\\GitHub\\-vingOOP\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
